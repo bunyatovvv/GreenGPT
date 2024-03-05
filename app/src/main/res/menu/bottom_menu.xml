@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/chatFragment"
+        android:icon="@drawable/chat_icon"
+        android:title="Chat">
+
+    </item>
+
+    <item
+        android:id="@+id/categoryFragment"
+        android:icon="@drawable/category_icon"
+        android:title="Category">
+
+    </item>
+
+    <item
+        android:id="@+id/savedFragment"
+        android:icon="@drawable/saved_icon"
+        android:title="Saved">
+
+    </item>
+
+</menu>
