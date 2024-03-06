@@ -57,7 +57,7 @@ dependencies {
     val room_version = "2.5.1"
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 
     // Lifecycle
     implementation ("androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version")
