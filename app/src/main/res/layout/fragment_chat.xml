@@ -1,6 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#171818"
     android:layout_height="match_parent"
-    tools:context=".presentation.chat.ChatFragment"/>
+    tools:context=".presentation.chat.ChatFragment">
+    
+    <LinearLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/inutEditText"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="51dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sfpro_regular"
+            android:text="Interacts actively with answers in a conversational way."
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp">
+
+        </TextView>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The a purely mechanical television"
+                android:textColor="#A6FFFFFF"
+                android:background="@drawable/rounded_corner"
+                android:textSize="15sp">
+
+            </TextView>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Creative ideas for a 10 year old's birthday?"
+                android:textColor="#A6FFFFFF"
+                android:background="@drawable/rounded_corner"
+                android:textSize="15sp">
+
+            </TextView>
+
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Elegant and luxury style van gogh styles"
+                android:textColor="#A6FFFFFF"
+                android:background="@drawable/rounded_corner"
+                android:textSize="15sp">
+
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sendCv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:cardCornerRadius="1000dp"
+        android:backgroundTint="@color/primary_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/baseline_send_24"
+            android:padding="10dp">
+        </ImageView>
+
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/inutEditText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/sendCv"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sfpro_regular"
+        app:layout_constraintTop_toTopOf="@id/sendCv"
+        app:layout_constraintBottom_toBottomOf="@id/sendCv"
+        android:background="@color/input">
+
+    </EditText>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
