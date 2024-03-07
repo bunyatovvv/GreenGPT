@@ -6,8 +6,20 @@
     android:background="#171818"
     android:layout_height="match_parent"
     tools:context=".presentation.chat.ChatFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRv"
+        tools:listitem="@layout/chat_row"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/inutEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/suggestLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -6,14 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.greengpt.data.dto.remote.dto.MessageDTO
 import com.example.greengpt.data.mapper.toContent
 import com.example.greengpt.databinding.FragmentChatBinding
+import com.example.greengpt.domain.local.MessageModel
 import com.example.greengpt.domain.remote.model.ChatPostModel
 import com.example.greengpt.domain.remote.model.Message
+import com.example.greengpt.presentation.chat.adapter.ChatAdapter
+import com.example.greengpt.util.Constants.LOADING_ID
+import com.example.greengpt.util.Constants.RECEIVE_ID
+import com.example.greengpt.util.Constants.SEND_ID
 import com.example.greengpt.util.Resource
 import com.example.greengpt.util.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +33,7 @@ class ChatFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<ChatViewModel>()
+    private val chatAdapter by lazy { ChatAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,22 +54,36 @@ class ChatFragment : Fragment() {
                     messages = messageList.toList()
                 )
                 viewModel.chat(postModel)
+                chatAdapter.insertMessage(MessageModel(content, SEND_ID,"salam"))
+                binding.chatRv.scrollToPosition(chatAdapter.itemCount - 1)
             }
         }
 
-        observeLiveData()
+        binding.chatRv.adapter = chatAdapter
+        binding.chatRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+
+
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        observeLiveData()
+
+        super.onViewCreated(view, savedInstanceState)
     }
 
     fun observeLiveData() {
         viewModel.chatResult.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
-                    Log.d("succcc",it.data.toString())
+                    it.data!!.choices.map {
+                        customMessage(it.message.content)
+                    }
+                    Log.d("succc",it.data.toString())
                 }
                 Status.LOADING -> {
-                    Toast.makeText(requireContext(),"loading",Toast.LENGTH_LONG).show()
                 }
 
                 Status.ERROR -> {
@@ -69,6 +91,12 @@ class ChatFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun customMessage(message : String){
+        val time = "asdasd"
+        chatAdapter.insertMessage(MessageModel(message, RECEIVE_ID, time))
+        binding.chatRv.scrollToPosition(chatAdapter.itemCount - 1)
     }
 
     override fun onDestroyView() {
