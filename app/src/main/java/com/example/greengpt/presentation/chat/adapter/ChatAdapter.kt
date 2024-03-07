@@ -1,23 +1,21 @@
 package com.example.greengpt.presentation.chat.adapter
 
 import android.annotation.SuppressLint
-import android.opengl.Visibility
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.greengpt.R
-import com.example.greengpt.databinding.ChatRowBinding
 import com.example.greengpt.domain.local.MessageModel
 import com.example.greengpt.util.Constants.LOADING_ID
 import com.example.greengpt.util.Constants.RECEIVE_ID
 import com.example.greengpt.util.Constants.SEND_ID
 import com.example.greengpt.util.animateCharacterByCharacter
+import com.example.greengpt.util.copyToClipboard
 
 class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
 
@@ -41,6 +39,7 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
         val sentText = holder.itemView.findViewById<TextView>(R.id.sentText)
         val receiveText = holder.itemView.findViewById<TextView>(R.id.receiveTextView)
         val timeText = holder.itemView.findViewById<TextView>(R.id.timeText)
+        val copyIcon = holder.itemView.findViewById<ImageView>(R.id.copyImage)
 
         when(currentMessage.id){
             SEND_ID -> {
@@ -60,6 +59,10 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
                 receiveText.animateCharacterByCharacter(currentMessage.message,33L)
                 sentLayout.visibility = View.GONE
             }
+        }
+
+        copyIcon.setOnClickListener {
+            it.context.copyToClipboard(receiveText.text)
         }
     }
 

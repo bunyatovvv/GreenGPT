@@ -1,17 +1,15 @@
 package com.example.greengpt.util
 
 import android.animation.ValueAnimator
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.widget.TextView
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
-fun TextView.animateCharacterByCharacter(text: String, delay: Long = 33L) {
-    // Make sure the text is not empty
+fun TextView.animateCharacterByCharacter(text: String, delay: Long = 25L) {
+
     if (text.isEmpty()) return
 
-    // Initialize a value animator to iterate over characters
     val charAnimation = ValueAnimator.ofInt(0, text.length)
 
     charAnimation.apply {
@@ -25,4 +23,10 @@ fun TextView.animateCharacterByCharacter(text: String, delay: Long = 33L) {
     }
 
     charAnimation.start()
+}
+
+fun Context.copyToClipboard(text: CharSequence){
+    val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    val clip = ClipData.newPlainText("label",text)
+    clipboard.setPrimaryClip(clip)
 }

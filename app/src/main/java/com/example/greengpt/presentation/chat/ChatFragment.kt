@@ -6,12 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.greengpt.data.dto.remote.dto.MessageDTO
 import com.example.greengpt.data.mapper.toMessage
 import com.example.greengpt.databinding.FragmentChatBinding
 import com.example.greengpt.domain.local.MessageModel
@@ -21,11 +18,9 @@ import com.example.greengpt.presentation.chat.adapter.ChatAdapter
 import com.example.greengpt.util.Constants.LOADING_ID
 import com.example.greengpt.util.Constants.RECEIVE_ID
 import com.example.greengpt.util.Constants.SEND_ID
-import com.example.greengpt.util.Resource
 import com.example.greengpt.util.Status
 import com.example.greengpt.util.Time
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.log
 
 @AndroidEntryPoint
 class ChatFragment : Fragment() {
