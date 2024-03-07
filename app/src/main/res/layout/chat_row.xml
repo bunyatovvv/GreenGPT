@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     android:background="@color/primary_black"
-    android:paddingBottom="20dp"
-    android:layout_height="wrap_content">
+    android:orientation="vertical"
+    android:paddingBottom="20dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/receiveCv"
@@ -23,10 +23,10 @@
                 android:id="@+id/receiveTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingEnd="20dp"
                 android:fontFamily="@font/sfpro_regular"
                 android:paddingStart="20dp"
                 android:paddingTop="20dp"
+                android:paddingEnd="20dp"
                 android:paddingBottom="20dp"
                 android:text="How can i help you?"
                 android:textColor="@color/black"
@@ -66,11 +66,11 @@
             </LinearLayout>
 
             <LinearLayout
-                android:paddingEnd="20dp"
-                android:paddingBottom="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:paddingEnd="20dp"
+                android:paddingBottom="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
@@ -94,7 +94,6 @@
             </LinearLayout>
 
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -104,36 +103,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/sentText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/sfpro_regular"
             android:text="Got any creative ideas for a 10 year old's birtday?"
             android:textColor="@color/white"
-            android:fontFamily="@font/sfpro_regular"
             android:textSize="25sp">
 
         </TextView>
 
 
         <LinearLayout
-            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#65FFFFFF"
-                    android:text="You  •"
                     android:fontFamily="@font/sfpro_regular"
+                    android:text="You  •"
+                    android:textColor="#65FFFFFF"
                     android:textSize="16sp">
 
                 </TextView>
@@ -142,10 +142,10 @@
                     android:id="@+id/timeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#65FFFFFF"
                     android:layout_marginLeft="4dp"
-                    android:text=" 11:40"
                     android:fontFamily="@font/sfpro_regular"
+                    android:text=" 11:40"
+                    android:textColor="#65FFFFFF"
                     android:textSize="16sp">
 
                 </TextView>
@@ -153,9 +153,9 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
                 android:src="@drawable/three_point_icon"
                 app:tint="#65FFFFFF">
 
@@ -164,11 +164,7 @@
         </LinearLayout>
 
 
-
-
-
     </LinearLayout>
-
 
 
 </LinearLayout>
