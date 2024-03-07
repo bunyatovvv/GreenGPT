@@ -23,6 +23,7 @@ import com.example.greengpt.util.Constants.RECEIVE_ID
 import com.example.greengpt.util.Constants.SEND_ID
 import com.example.greengpt.util.Resource
 import com.example.greengpt.util.Status
+import com.example.greengpt.util.Time
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -54,7 +55,8 @@ class ChatFragment : Fragment() {
                     messages = messageList.toList()
                 )
                 viewModel.chat(postModel)
-                chatAdapter.insertMessage(MessageModel(content, SEND_ID,"salam"))
+                val time = Time.timeStamp()
+                chatAdapter.insertMessage(MessageModel(content, SEND_ID,time))
                 binding.chatRv.scrollToPosition(chatAdapter.itemCount - 1)
             }
         }
@@ -70,6 +72,9 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         observeLiveData()
+        val time = Time.timeStamp()
+        val messageModel = MessageModel("Hi, how can i help you?", RECEIVE_ID,time)
+        chatAdapter.insertMessage(messageModel)
 
         super.onViewCreated(view, savedInstanceState)
     }
@@ -84,17 +89,20 @@ class ChatFragment : Fragment() {
                     Log.d("succc",it.data.toString())
                 }
                 Status.LOADING -> {
+                    binding.sendCv.isClickable = false
+                    binding.inutEditText.isActivated = false
+                    binding.inutEditText.isClickable = false
                 }
 
                 Status.ERROR -> {
-                    Log.d("errrr",it.message.toString())
+                    customMessage(it.message ?: "error")
                 }
             }
         })
     }
 
     private fun customMessage(message : String){
-        val time = "asdasd"
+        val time = Time.timeStamp()
         chatAdapter.insertMessage(MessageModel(message, RECEIVE_ID, time))
         binding.chatRv.scrollToPosition(chatAdapter.itemCount - 1)
     }

@@ -38,17 +38,20 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
         val receiveCv = holder.itemView.findViewById<CardView>(R.id.receiveCv)
         val sentText = holder.itemView.findViewById<TextView>(R.id.sentText)
         val receiveText = holder.itemView.findViewById<TextView>(R.id.receiveTextView)
+        val timeText = holder.itemView.findViewById<TextView>(R.id.timeText)
 
         when(currentMessage.id){
             SEND_ID -> {
                 sentText.text = currentMessage.message
                 sentLayout.visibility = View.VISIBLE
-                receiveCv.visibility = View.VISIBLE
+                receiveCv.visibility = View.GONE
+                timeText.text = currentMessage.time
             }
 
             RECEIVE_ID -> {
                 receiveText.text = currentMessage.message
                 sentLayout.visibility = View.GONE
+                receiveCv.visibility = View.VISIBLE
             }
         }
     }
