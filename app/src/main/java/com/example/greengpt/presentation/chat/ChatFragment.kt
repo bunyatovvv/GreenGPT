@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.greengpt.data.dto.remote.dto.MessageDTO
-import com.example.greengpt.data.mapper.toContent
+import com.example.greengpt.data.mapper.toMessage
 import com.example.greengpt.databinding.FragmentChatBinding
 import com.example.greengpt.domain.local.MessageModel
 import com.example.greengpt.domain.remote.model.ChatPostModel
@@ -25,7 +25,7 @@ import com.example.greengpt.util.Resource
 import com.example.greengpt.util.Status
 import com.example.greengpt.util.Time
 import dagger.hilt.android.AndroidEntryPoint
-
+import kotlin.math.log
 
 @AndroidEntryPoint
 class ChatFragment : Fragment() {
@@ -36,12 +36,18 @@ class ChatFragment : Fragment() {
     private val viewModel by viewModels<ChatViewModel>()
     private val chatAdapter by lazy { ChatAdapter() }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val time = Time.timeStamp()
+        val messageModel = MessageModel("Hi, how can i help you?", RECEIVE_ID,time)
+        chatAdapter.insertMessage(messageModel)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentChatBinding.inflate(inflater, container, false)
-
 
         binding.sendCv.setOnClickListener {
             if (binding.inutEditText.text.toString().isNotEmpty()){
@@ -64,31 +70,26 @@ class ChatFragment : Fragment() {
         binding.chatRv.adapter = chatAdapter
         binding.chatRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
 
+        observeLiveData()
 
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        observeLiveData()
-        val time = Time.timeStamp()
-        val messageModel = MessageModel("Hi, how can i help you?", RECEIVE_ID,time)
-        chatAdapter.insertMessage(messageModel)
-
-        super.onViewCreated(view, savedInstanceState)
-    }
 
     fun observeLiveData() {
         viewModel.chatResult.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
-                    it.data!!.choices.map {
-                        customMessage(it.message.content)
-                    }
-                    Log.d("succc",it.data.toString())
+                    val mes = it.data!!.toMessage()
+                    chatAdapter.messageList.last().id = RECEIVE_ID
+                    chatAdapter.messageList.last().message = mes
+                    chatAdapter.notifyDataSetChanged()
+                    Log.e("succc", chatAdapter.messageList.last().message)
+
                 }
                 Status.LOADING -> {
+                    chatAdapter.insertMessage(MessageModel("Thinking...", LOADING_ID,"14:43"))
                     binding.sendCv.isClickable = false
                     binding.inutEditText.isActivated = false
                     binding.inutEditText.isClickable = false
@@ -103,7 +104,7 @@ class ChatFragment : Fragment() {
 
     private fun customMessage(message : String){
         val time = Time.timeStamp()
-        chatAdapter.insertMessage(MessageModel(message, RECEIVE_ID, time))
+        chatAdapter.insertMessage(MessageModel(message, LOADING_ID, time))
         binding.chatRv.scrollToPosition(chatAdapter.itemCount - 1)
     }
 

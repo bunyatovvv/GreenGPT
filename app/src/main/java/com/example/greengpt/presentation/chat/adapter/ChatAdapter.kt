@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.greengpt.R
 import com.example.greengpt.databinding.ChatRowBinding
@@ -16,6 +17,7 @@ import com.example.greengpt.domain.local.MessageModel
 import com.example.greengpt.util.Constants.LOADING_ID
 import com.example.greengpt.util.Constants.RECEIVE_ID
 import com.example.greengpt.util.Constants.SEND_ID
+import com.example.greengpt.util.animateCharacterByCharacter
 
 class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
 
@@ -48,10 +50,15 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
                 timeText.text = currentMessage.time
             }
 
-            RECEIVE_ID -> {
-                receiveText.text = currentMessage.message
+            LOADING_ID -> {
+                receiveText.animateCharacterByCharacter(currentMessage.message,33L)
                 sentLayout.visibility = View.GONE
                 receiveCv.visibility = View.VISIBLE
+            }
+
+            RECEIVE_ID -> {
+                receiveText.animateCharacterByCharacter(currentMessage.message,33L)
+                sentLayout.visibility = View.GONE
             }
         }
     }
