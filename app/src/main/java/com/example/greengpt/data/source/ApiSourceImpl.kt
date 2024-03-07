@@ -1,6 +1,6 @@
 package com.example.greengpt.data.source
 
-import com.example.greengpt.data.api.Api
+import com.example.greengpt.data.service.api.Api
 import com.example.greengpt.data.dto.remote.dto.ChatDTO
 import com.example.greengpt.domain.remote.model.ChatPostModel
 import com.example.greengpt.util.Resource

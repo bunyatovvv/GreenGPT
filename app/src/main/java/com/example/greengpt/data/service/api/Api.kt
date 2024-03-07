@@ -1,4 +1,4 @@
-package com.example.greengpt.data.api
+package com.example.greengpt.data.service.api
 
 import com.example.greengpt.constants.TEXT_COMPLETIONS_TURBO
 import com.example.greengpt.data.dto.remote.dto.ChatDTO

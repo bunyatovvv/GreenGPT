@@ -2,7 +2,7 @@ package com.example.greengpt.di
 
 import com.example.greengpt.constants.API_KEY
 import com.example.greengpt.constants.BASE_URL
-import com.example.greengpt.data.api.Api
+import com.example.greengpt.data.service.api.Api
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
