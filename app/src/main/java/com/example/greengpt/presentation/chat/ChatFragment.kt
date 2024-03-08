@@ -1,5 +1,6 @@
 package com.example.greengpt.presentation.chat
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -28,7 +29,6 @@ class ChatFragment : Fragment() {
 
     private var _binding: FragmentChatBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel by viewModels<ChatViewModel>()
     private val chatAdapter by lazy { ChatAdapter() }
 
@@ -73,6 +73,7 @@ class ChatFragment : Fragment() {
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     fun observeLiveData() {
         viewModel.chatResult.observe(viewLifecycleOwner, Observer {
             when (it.status) {

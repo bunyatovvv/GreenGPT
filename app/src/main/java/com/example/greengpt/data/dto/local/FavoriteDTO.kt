@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class FavoriteDTO(
 
     @PrimaryKey(autoGenerate = true)
-    var id : Int = 0,
+    var id : Int,
     @ColumnInfo(name = "title")
     val title : String,
     @ColumnInfo(name = "message")
