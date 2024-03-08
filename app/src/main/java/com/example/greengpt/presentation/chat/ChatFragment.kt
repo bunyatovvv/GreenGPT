@@ -15,6 +15,7 @@ import com.example.greengpt.domain.local.MessageModel
 import com.example.greengpt.domain.remote.model.ChatPostModel
 import com.example.greengpt.domain.remote.model.Message
 import com.example.greengpt.presentation.chat.adapter.ChatAdapter
+import com.example.greengpt.util.Constants.FIRST_ID
 import com.example.greengpt.util.Constants.LOADING_ID
 import com.example.greengpt.util.Constants.RECEIVE_ID
 import com.example.greengpt.util.Constants.SEND_ID
@@ -34,7 +35,7 @@ class ChatFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val time = Time.timeStamp()
-        val messageModel = MessageModel("Hi, how can i help you?", RECEIVE_ID,time)
+        val messageModel = MessageModel("Hi, how can i help you?", FIRST_ID,time)
         chatAdapter.insertMessage(messageModel)
     }
 

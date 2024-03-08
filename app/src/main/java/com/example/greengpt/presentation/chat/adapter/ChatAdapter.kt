@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.greengpt.R
 import com.example.greengpt.domain.local.MessageModel
+import com.example.greengpt.util.Constants.FIRST_ID
 import com.example.greengpt.util.Constants.LOADING_ID
 import com.example.greengpt.util.Constants.RECEIVE_ID
 import com.example.greengpt.util.Constants.SEND_ID
@@ -42,6 +43,11 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatHolder>() {
         val copyIcon = holder.itemView.findViewById<ImageView>(R.id.copyImage)
 
         when(currentMessage.id){
+
+            FIRST_ID -> {
+                sentLayout.visibility = View.GONE
+            }
+
             SEND_ID -> {
                 sentText.text = currentMessage.message
                 sentLayout.visibility = View.VISIBLE
