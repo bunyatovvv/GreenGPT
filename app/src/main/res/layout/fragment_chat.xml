@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
     
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/suggestLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +41,7 @@
         </TextView>
 
         <LinearLayout
+            android:id="@+id/variantsLayout"
             android:orientation="vertical"
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
@@ -111,7 +112,8 @@
     <EditText
         android:id="@+id/inutEditText"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:padding="8dp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/sendCv"
         android:layout_marginStart="16dp"

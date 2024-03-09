@@ -1,4 +1,4 @@
-package com.example.greengpt.domain.remote.model
+package com.example.greengpt.domain.model.remote
 
 data class ChatPostModel(
     val messages: List<Message>,

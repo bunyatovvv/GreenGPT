@@ -31,7 +31,7 @@
                 android:text="How can i help you?"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                app:layout_constraintBottom_toTopOf="@+id/likeLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@+id/likeLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -66,6 +66,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/copyLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -83,6 +84,7 @@
                 </ImageView>
 
                 <ImageView
+                    android:id="@+id/options"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"

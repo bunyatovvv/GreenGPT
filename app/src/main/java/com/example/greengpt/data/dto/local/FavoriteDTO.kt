@@ -7,10 +7,12 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "favorite_table")
 data class FavoriteDTO(
 
-    @PrimaryKey(autoGenerate = true)
-    var id : Int,
     @ColumnInfo(name = "title")
     val title : String,
     @ColumnInfo(name = "message")
-    val message : String
+    val message : String,
+    @ColumnInfo(name = "time")
+    val time : String,
+    @PrimaryKey(autoGenerate = true)
+    var id : Int
 )

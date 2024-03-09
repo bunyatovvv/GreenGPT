@@ -11,11 +11,6 @@
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
-        android:id="@+id/categoryFragment"
-        android:name="com.example.greengpt.presentation.category.CategoryFragment"
-        android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
-    <fragment
         android:id="@+id/savedFragment"
         android:name="com.example.greengpt.presentation.saved.SavedFragment"
         android:label="fragment_saved"

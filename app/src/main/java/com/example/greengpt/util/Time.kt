@@ -1,6 +1,5 @@
 package com.example.greengpt.util
 
-import java.security.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Date
 

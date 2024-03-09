@@ -8,13 +8,6 @@
     </item>
 
     <item
-        android:id="@+id/categoryFragment"
-        android:icon="@drawable/category_icon"
-        android:title="Category">
-
-    </item>
-
-    <item
         android:id="@+id/savedFragment"
         android:icon="@drawable/saved_icon"
         android:title="Saved">
