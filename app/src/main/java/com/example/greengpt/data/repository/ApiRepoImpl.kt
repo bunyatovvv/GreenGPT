@@ -20,11 +20,9 @@ class ApiRepoImpl @Inject constructor(
             Status.SUCCESS -> {
                 emit(Resource.success(response.data))
             }
-
             Status.ERROR -> {
                 emit(Resource.error(response.message ?: "Error", null))
             }
-
             else -> {
             }
         }

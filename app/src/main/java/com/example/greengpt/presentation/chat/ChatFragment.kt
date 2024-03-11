@@ -3,7 +3,6 @@ package com.example.greengpt.presentation.chat
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -83,9 +82,6 @@ class ChatFragment : Fragment() {
             }
         }
 
-
-
-
         chatAdapter.setOnSaveClickedListener {
             val time = Time.timeStamp()
             val favorite = FavoriteDTO(
@@ -106,19 +102,14 @@ class ChatFragment : Fragment() {
         return binding.root
     }
 
-
     @SuppressLint("NotifyDataSetChanged")
     fun observeLiveData() {
         viewModel.chatResult.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
                     val mes = it.data!!.toMessage()
-                    val message = MessageModel(mes, RECEIVE_ID,"16")
-
                     chatAdapter.messageList.last().message = mes
                     chatAdapter.messageList.last().id = RECEIVE_ID
-
-
                     binding.sendCv.isClickable = true
                     binding.inutEditText.isActivated = true
                     binding.inutEditText.isClickable = true
@@ -126,16 +117,13 @@ class ChatFragment : Fragment() {
                 }
 
                 Status.LOADING -> {
-
-
                     binding.sendCv.isClickable = false
                     binding.inutEditText.isActivated = false
                     binding.inutEditText.isClickable = false
-                    Log.e("deeebbb",chatAdapter.messageList.toString())
                 }
 
                 Status.ERROR -> {
-                    customMessage(it.message ?: "error")
+                    customMessage(it.message ?: "something went wrong")
                 }
             }
         })
@@ -145,11 +133,6 @@ class ChatFragment : Fragment() {
         val time = Time.timeStamp()
         chatAdapter.insertMessage(MessageModel(message, LOADING_ID, time))
         binding.chatRv.scrollToPosition(chatAdapter.itemCount - 1)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun writeText(text: String, editText: EditText) {
@@ -175,5 +158,9 @@ class ChatFragment : Fragment() {
             writeText(thirdSuggest.text.toString(), binding.inutEditText)
             binding.suggestLayout.gone()
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

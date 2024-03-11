@@ -9,19 +9,15 @@ class RoomSourceImpl @Inject constructor(
 ) : RoomSource {
 
     override suspend fun getAllFavorites(): List<FavoriteDTO> {
-
         return try {
             dao.getAllFavorites()
         } catch (e: Exception) {
             emptyList()
         }
-
     }
-
     override suspend fun insertFavorite(favoriteDTO: FavoriteDTO) {
         dao.insertFavorite(favoriteDTO)
     }
-
     override suspend fun deleteFavorite(favoriteDTO: FavoriteDTO) {
        dao.deleteFavorite(favoriteDTO)
     }

@@ -5,6 +5,5 @@ import com.example.greengpt.domain.model.remote.ChatPostModel
 import com.example.greengpt.util.Resource
 
 interface ApiSource {
-
     suspend fun chat(chatPostModel: ChatPostModel) : Resource<ChatDTO>
 }

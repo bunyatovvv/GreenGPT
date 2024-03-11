@@ -9,8 +9,6 @@ object Time {
         val timeStamp = java.sql.Timestamp(System.currentTimeMillis())
         val sdf = SimpleDateFormat("HH:mm")
         val time = sdf.format(Date(timeStamp.time))
-
         return time.toString()
     }
-
 }

@@ -11,7 +11,6 @@ abstract class SwipeToDelete : ItemTouchHelper.Callback() {
         val swipeFlag = ItemTouchHelper.LEFT
         return makeMovementFlags(0,swipeFlag)
     }
-
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
@@ -19,5 +18,4 @@ abstract class SwipeToDelete : ItemTouchHelper.Callback() {
     ): Boolean {
         return false
     }
-
 }

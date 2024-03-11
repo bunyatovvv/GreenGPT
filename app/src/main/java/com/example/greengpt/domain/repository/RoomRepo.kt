@@ -5,11 +5,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface RoomRepo {
 
-
     suspend fun getAllFavorites() : Flow<List<FavoriteDTO>>
-
     suspend fun insertFavorite(favoriteDTO: FavoriteDTO)
-
     suspend fun deleteFavorite(favoriteDTO: FavoriteDTO)
 
 

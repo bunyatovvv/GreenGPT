@@ -12,10 +12,8 @@ interface RoomDAO {
 
     @Query("SELECT * FROM favorite_table")
     fun getAllFavorites() : List<FavoriteDTO>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavorite(favoriteDTO: FavoriteDTO)
-
     @Delete
     suspend fun deleteFavorite(favoriteDTO: FavoriteDTO)
 }

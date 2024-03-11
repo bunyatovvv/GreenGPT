@@ -19,21 +19,15 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
-
     @Singleton
     @Provides
     fun provideApiSource(api: Api) = ApiSourceImpl(api) as ApiSource
-
     @Singleton
     @Provides
     fun provideApiRepo(apiSource: ApiSourceImpl) = ApiRepoImpl(apiSource) as ApiRepo
-
-
     @Singleton
     @Provides
     fun provideRoomSource(dao : RoomDAO) = RoomSourceImpl(dao) as RoomSource
-
-
     @Singleton
     @Provides
     fun provideRoomRepo(roomSource: RoomSourceImpl) = RoomRepoImpl(roomSource) as RoomRepo

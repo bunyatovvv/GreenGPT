@@ -18,7 +18,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
     @Singleton
     @Provides
     fun provideOkHttpClient() = OkHttpClient.Builder()
@@ -36,7 +35,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient) : Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val gson = GsonBuilder().setLenient().create()
 
         return Retrofit.Builder()
@@ -50,5 +49,4 @@ object NetworkModule {
     @Provides
     fun provideApiService(retrofit: Retrofit): Api =
         retrofit.create(Api::class.java)
-
 }

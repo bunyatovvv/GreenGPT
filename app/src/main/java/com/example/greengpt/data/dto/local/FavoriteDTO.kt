@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "favorite_table")
 data class FavoriteDTO(
-
     @ColumnInfo(name = "title")
     val title : String,
     @ColumnInfo(name = "message")

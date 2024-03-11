@@ -23,24 +23,19 @@ fun TextView.animateCharacterByCharacter(text: String, delay: Long = 25L) {
             this@animateCharacterByCharacter.text = animatedText
         }
     }
-
     charAnimation.start()
 }
-
 fun Context.copyToClipboard(text: CharSequence){
     val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText("label",text)
     clipboard.setPrimaryClip(clip)
 }
-
 fun View.gone(){
     this.visibility = View.GONE
 }
-
 fun View.visible(){
     this.visibility = View.VISIBLE
 }
-
 fun Intent.shareTextPlain(text : String){
     this.action = Intent.ACTION_SEND
     this.putExtra(Intent.EXTRA_TEXT,text)

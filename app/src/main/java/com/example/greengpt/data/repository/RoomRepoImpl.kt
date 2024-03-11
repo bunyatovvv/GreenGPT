@@ -10,15 +10,12 @@ import javax.inject.Inject
 class RoomRepoImpl @Inject constructor(
    private val roomSource: RoomSourceImpl
 ) : RoomRepo {
-
     override suspend fun getAllFavorites(): Flow<List<FavoriteDTO>> = flow {
         emit(roomSource.getAllFavorites())
     }
-
     override suspend fun insertFavorite(favoriteDTO: FavoriteDTO) {
         roomSource.insertFavorite(favoriteDTO)
     }
-
     override suspend fun deleteFavorite(favoriteDTO: FavoriteDTO) {
         roomSource.deleteFavorite(favoriteDTO)
     }

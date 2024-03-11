@@ -13,14 +13,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object LocalModule {
-
     @Singleton
     @Provides
     fun provideRoomDB(@ApplicationContext context : Context) = Room.databaseBuilder(
         context,
         RoomDB::class.java,"gpt-db"
     ).build()
-
     @Singleton
     @Provides
     fun provideDao(db : RoomDB) = db.getDao()

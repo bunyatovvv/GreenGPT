@@ -24,18 +24,15 @@ class SavedFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel by viewModels<SavedViewModel>()
     private val savedAdapter by lazy { SavedAdapter() }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSavedBinding.inflate(inflater, container, false)
         viewModel.getFavorites()
-
         binding.savedRv.adapter = savedAdapter
         binding.savedRv.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-
 
         val itemHelperCallback = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
             override fun onMove(
@@ -57,7 +54,6 @@ class SavedFragment : Fragment() {
         ItemTouchHelper(itemHelperCallback).apply {
             attachToRecyclerView(binding.savedRv)
         }
-
         return binding.root
     }
 
@@ -76,7 +72,6 @@ class SavedFragment : Fragment() {
             }
         })
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
